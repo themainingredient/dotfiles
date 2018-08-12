@@ -1,0 +1,70 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+        "spec": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/apm-install-dir-118712-7973-uwz4f3.yz3sgx2yb9"
+    ]
+  ],
+  "_from": "../d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+  "_id": "rspec@0.4.0",
+  "_inCache": true,
+  "_location": "/rspec",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+    "spec": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+  "_shasum": "669fb1e4258dc53bbfcefd9f60b0421d134d6921",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/d-118712-7973-1rzfbk9.lg2mym0a4i/package.tgz",
+  "_where": "/private/var/folders/s_/z05llw511gz1v26g9k40d5xc0000gn/T/apm-install-dir-118712-7973-uwz4f3.yz3sgx2yb9",
+  "activationCommands": {
+    "atom-workspace": [
+      "rspec:run",
+      "rspec:run-for-line",
+      "rspec:run-last",
+      "rspec:run-all"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/fcoury/atom-rspec/issues"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.3"
+  },
+  "description": "Atom RSpec runner package",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/fcoury/atom-rspec#readme",
+  "license": "MIT",
+  "main": "./lib/rspec",
+  "name": "rspec",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# Atom RSpec Runner Package\n\n[![ghit.me](https://ghit.me/badge.svg?repo=fcoury/atom-rspec)](https://ghit.me/repo/fcoury/atom-rspec)\n\nAdd ability to run RSpec and see the output without leaving Atom.\n\nHotKeys:\n\n- __Ctrl+Alt+T__ - executes all specs the current file\n- __Ctrl+Alt+X__ - executes only the spec on the line the cursor's at\n- __Ctrl+Alt+E__ - re-executes the last executed spec\n\n![Screenshot](http://cl.ly/image/2G2B3M2g3l3k/stats_collector_spec.rb%20-%20-Users-fcoury-Projects-crm_bliss.png)\n\n## Configuration\n\nBy default this package will run `rspec` as the command.\n\nYou can set the default command by either accessing the Settings page (Cmd+,)\nand changing the command option like below:\n\n![Configuration Screenshot](http://f.cl.ly/items/2k1C0E0e1l2Z3m1l3e1R/Settings%20-%20-Users-fcoury-Projects-crm_bliss.jpg)\n\nOr by opening your configuration file (clicking __Atom__ > __Open Your Config__)\nand adding or changing the following snippet:\n\n    'rspec':\n      'command': 'bundle exec rspec'\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcoury/atom-rspec.git"
+  },
+  "version": "0.4.0"
+}
