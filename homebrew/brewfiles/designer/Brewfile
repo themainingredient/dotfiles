@@ -1,2 +1,4 @@
 # Cask
+cask 'craftmanager'
 cask 'sketch'
+cask 'zeplin'
