@@ -175,6 +175,21 @@ install_homebrew () {
   homebrew/install.sh 2>&1
 }
 
+setup_fastlane () {
+  if ! [ -f fastlane/shell.local.zsh ]
+  then
+    read -p "Do you want to set up fastlane? (Y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      user " - What is your Apple ID you want to use for shipping releases?"
+      read -e fastlane_username
+
+      sed -e "s/FL_USERNAME/$fastlane_username/g" fastlane/shell.local.zsh.example > fastlane/shell.local.zsh
+    fi
+  fi
+}
+
 install_homebrew_kegs () {
   local location=""
   local role=$1
@@ -206,6 +221,7 @@ install_developer_tools () {
     setup_projects_folder
     install_dotfiles
     install_homebrew_kegs "developer"
+    setup_fastlane
     set_default_to_zsh
   fi
 }
