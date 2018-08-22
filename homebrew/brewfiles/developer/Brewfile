@@ -26,6 +26,7 @@ brew 'redis', restart_service: :changed
 # Coding
 brew 'cloc'
 brew 'node'
+brew 'nvm'
 brew 'qt@5.5' if MacOS::Xcode.installed?
 brew 'rbenv'
 cask 'rowanj-gitx'
