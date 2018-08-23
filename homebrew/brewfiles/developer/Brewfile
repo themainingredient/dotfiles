@@ -32,6 +32,7 @@ brew 'rbenv'
 cask 'rowanj-gitx'
 
 # Cask
+cask 'android-platform-tools'
 cask 'atom'
 cask 'iterm2'
 cask 'visual-studio-code'
