@@ -35,3 +35,6 @@ cask 'rowanj-gitx'
 cask 'atom'
 cask 'iterm2'
 cask 'visual-studio-code'
+
+# Docker
+cask 'docker'
