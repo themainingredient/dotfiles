@@ -29,12 +29,11 @@ brew 'node'
 brew 'nvm'
 brew 'qt@5.5' if MacOS::Xcode.installed?
 brew 'rbenv'
-cask 'rowanj-gitx'
 
 # Cask
 cask 'atom'
-cask 'iterm2'
-cask 'visual-studio-code'
-
-# Docker
 cask 'docker'
+cask 'iterm2'
+cask 'postman'
+cask 'rowanj-gitx'
+cask 'visual-studio-code'
