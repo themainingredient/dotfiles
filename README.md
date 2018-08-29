@@ -9,7 +9,7 @@ We set up this project because of a few reasons:
 Run this:
 
 ```sh
-git clone https://github.com/themainingredient/dotfiles.git ~/.dotfiles
+git clone git@github.com:themainingredient/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
