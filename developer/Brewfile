@@ -1,0 +1,38 @@
+# Unix
+brew 'git'
+brew 'openssl'
+brew 'watchman'
+
+# Heroku
+brew 'heroku'
+
+# GitHub
+brew 'hub'
+
+# Image manipulation
+brew 'imagemagick'
+
+# Programming language prerequisites and package managers
+brew 'libyaml' # should come after openssl
+brew 'coreutils'
+brew 'yarn'
+cask 'gpg-suite'
+
+# Databases
+brew 'postgresql', restart_service: :changed
+brew 'redis', restart_service: :changed
+
+# Coding
+brew 'cloc'
+brew 'node'
+brew 'nvm'
+brew 'qt@5.5' if MacOS::Xcode.installed?
+brew 'rbenv'
+
+# Cask
+cask 'atom'
+cask 'docker'
+cask 'iterm2'
+cask 'postman'
+cask 'rowanj-gitx'
+cask 'visual-studio-code'

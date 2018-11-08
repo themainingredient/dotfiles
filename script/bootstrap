@@ -39,7 +39,7 @@ verify_xcode () {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
+  if ! [ -f developer/git/gitconfig.local.symlink ]
   then
     info "setup gitconfig"
 
@@ -54,21 +54,21 @@ setup_gitconfig () {
     user " - What is your github author email?"
     read -e git_AUTHOR_EMAIL
 
-    sed -e "s/AUTHOR_NAME/$git_AUTHOR_NAME/g" -e "s/AUTHOR_EMAIL/$git_AUTHOR_EMAIL/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    sed -e "s/AUTHOR_NAME/$git_AUTHOR_NAME/g" -e "s/AUTHOR_EMAIL/$git_AUTHOR_EMAIL/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" developer/git/gitconfig.local.symlink.example > developer/git/gitconfig.local.symlink
 
     success "gitconfig"
   fi
 }
 
 setup_projects_folder () {
-  if ! [ -f zsh/localrc.symlink ]
+  if ! [ -f common/zsh/localrc.symlink ]
   then
     info "setup projects folder"
 
     user " - Where are your projects located?"
     read -e projects_folder
 
-    sed -e "s/PROJECTS_FOLDER/$(echo $projects_folder | sed -e 's/[\/&]/\\&/g')/g" zsh/localrc.example > zsh/localrc.symlink
+    sed -e "s/PROJECTS_FOLDER/$(echo $projects_folder | sed -e 's/[\/&]/\\&/g')/g" common/zsh/localrc.example > common/zsh/localrc.symlink
     success "coding folder"
   fi
 }
@@ -153,9 +153,10 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name "*.symlink" -not -path "*.git*")
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 3 -name "*.symlink" -not -path "*.git*")
   do
     dst="$HOME/.$(basename "${src%.*}")"
+    echo "linking ${src} to ${dst}"
     link_file "$src" "$dst"
   done
 }
@@ -172,22 +173,7 @@ set_default_to_zsh () {
 }
 
 install_homebrew () {
-  homebrew/install.sh 2>&1
-}
-
-setup_fastlane () {
-  if ! [ -f fastlane/shell.local.zsh ]
-  then
-    read -p "Do you want to set up fastlane? (Y/N): " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-      user " - What is your Apple ID you want to use for shipping releases?"
-      read -e fastlane_username
-
-      sed -e "s/FL_USERNAME/$fastlane_username/g" fastlane/shell.local.zsh.example > fastlane/shell.local.zsh
-    fi
-  fi
+  base/homebrew/install.sh 2>&1
 }
 
 install_homebrew_kegs () {
@@ -196,19 +182,44 @@ install_homebrew_kegs () {
 
   case "$1" in
     "developer")
-      location="homebrew/brewfiles/developer/Brewfile"
+      location="developer/Brewfile"
       ;;
     "designer")
-      location="homebrew/brewfiles/designer/Brewfile"
+      location="designer/Brewfile"
       ;;
     *)
-      location="homebrew/brewfiles/common/Brewfile"
+      location="common/Brewfile"
       role="common"
       ;;
   esac
 
   echo "› Installing $role tools"
   brew bundle --file="$location"
+
+  # find the installers and run them iteratively
+  find "${role}" -name install.sh -exec sh -c {} \;
+}
+
+install_common_tools () {
+  install_dotfiles
+  install_homebrew
+  install_homebrew_kegs "common"
+  set_default_to_zsh
+}
+
+setup_fastlane () {
+  if ! [ -f developer/fastlane/shell.local.zsh ]
+  then
+    read -p "Do you want to set up fastlane? (Y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      user " - What is your Apple ID you want to use for shipping releases?"
+      read -e fastlane_username
+
+      sed -e "s/FL_USERNAME/$fastlane_username/g" developer/fastlane/shell.local.zsh.example > developer/fastlane/shell.local.zsh
+    fi
+  fi
 }
 
 install_developer_tools () {
@@ -219,10 +230,8 @@ install_developer_tools () {
     verify_xcode
     setup_gitconfig
     setup_projects_folder
-    install_dotfiles
     install_homebrew_kegs "developer"
     setup_fastlane
-    set_default_to_zsh
   fi
 }
 
@@ -235,22 +244,9 @@ install_designer_tools () {
   fi
 }
 
-install_homebrew
-install_homebrew_kegs "common"
+install_common_tools
 install_developer_tools
 install_designer_tools
-
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
 
 echo ""
 echo "  All installed!"

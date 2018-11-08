@@ -1,0 +1,10 @@
+brew 'zsh'
+
+cask '1password'
+cask 'alfred'
+cask 'dropbox'
+cask 'google-chrome'
+cask 'harvest'
+cask 'spectacle'
+cask 'spotify'
+cask 'slack'
