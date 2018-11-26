@@ -47,7 +47,8 @@ function install_user_config() {
       echo "  Your previous config has been saved to: $HOME/Library/Application Support/Code/User/settings.backup.json"
     fi
 
-    cp ./settings.json.example "$HOME/Library/Application Support/Code/User/settings.json"
+    CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+    cp $CURRENT_DIR/settings.json.example "$HOME/Library/Application Support/Code/User/settings.json"
     echo "  New user config has been written. Please restart Visual Studio Code."
   fi
 }
