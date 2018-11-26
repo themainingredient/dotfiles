@@ -4,7 +4,8 @@ brew 'openssl'
 brew 'watchman'
 
 # Heroku
-brew 'heroku'
+tap 'heroku/brew'
+brew 'heroku/brew/heroku'
 
 # GitHub
 brew 'hub'
