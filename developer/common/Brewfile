@@ -1,7 +1,7 @@
 # Unix
 brew 'git'
 brew 'openssl'
-brew 'watchman'
+brew 'watchman' # nog nodig?
 
 # Heroku
 tap 'heroku/brew'
@@ -16,7 +16,6 @@ brew 'imagemagick'
 # Programming language prerequisites and package managers
 brew 'libyaml' # should come after openssl
 brew 'coreutils'
-brew 'yarn'
 cask 'gpg-suite'
 
 # Databases
@@ -25,10 +24,6 @@ brew 'redis', restart_service: :changed
 
 # Coding
 brew 'cloc'
-brew 'node'
-brew 'nvm'
-brew 'qt@5.5' if MacOS::Xcode.installed?
-brew 'rbenv'
 
 # Cask
 cask 'atom'
