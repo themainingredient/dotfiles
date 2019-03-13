@@ -31,7 +31,6 @@ brew 'qt@5.5' if MacOS::Xcode.installed?
 brew 'rbenv'
 
 # Cask
-cask 'atom'
 cask 'docker'
 cask 'iterm2'
 cask 'postman'
