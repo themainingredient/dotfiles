@@ -26,7 +26,6 @@ brew 'redis', restart_service: :changed
 brew 'cloc'
 
 # Cask
-cask 'atom'
 cask 'docker'
 cask 'iterm2'
 cask 'postman'
