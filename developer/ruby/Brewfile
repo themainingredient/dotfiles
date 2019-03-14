@@ -1,3 +1,6 @@
+# Taps
+tap 'themainingredient/homebrew-qt5.5'
+
 # Coding
 brew 'rbenv'
 
