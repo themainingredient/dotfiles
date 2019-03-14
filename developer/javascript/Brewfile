@@ -1,0 +1,6 @@
+# Programming language prerequisites and package managers
+brew 'yarn'
+
+# Coding
+brew 'node'
+brew 'nvm'
