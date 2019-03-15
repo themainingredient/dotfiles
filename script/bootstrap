@@ -153,7 +153,7 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 3 -name "*.symlink" -not -path "*.git*")
+  for src in $(find -H "$DOTFILES_ROOT" -name "*.symlink" -not -path "*.git*")
   do
     dst="$HOME/.$(basename "${src%.*}")"
     echo "linking ${src} to ${dst}"
@@ -181,14 +181,8 @@ install_homebrew_kegs () {
   local role=$1
 
   case "$1" in
-    "developer/common")
-      location="developer/common/Brewfile"
-      ;;
-    "developer/ruby")
-      location="developer/ruby/Brewfile"
-      ;;
-    "developer/javascript")
-      location="developer/javascript/Brewfile"
+    developer/*)
+      location="$1/Brewfile"
       ;;
     "designer")
       location="designer/Brewfile"
@@ -223,6 +217,25 @@ setup_fastlane () {
   fi
 }
 
+ask_developer_tools () {
+  read -p "Do you want to set up $1 tools? (Y/N): " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    # Optionally you can pass in a reference to a Brewfile
+    if [ ! -z "$2" ]
+    then
+      install_homebrew_kegs "developer/$2"
+    fi
+
+    # You can also pass in a function reference that must be called
+    if [ ! -z "$3" ]
+    then
+      $3
+    fi
+  fi
+}
+
 install_developer_tools () {
   read -p "Do you want to set up developer tools? (Y/N): " -n 1 -r
   echo
@@ -232,24 +245,11 @@ install_developer_tools () {
     setup_gitconfig
     setup_projects_folder
     install_homebrew_kegs "developer/common"
-      read -p "Do you want to set up Ruby tools? (Y/N): " -n 1 -r
-      echo
-      if [[ $REPLY =~ ^[Yy]$ ]]
-      then
-      install_homebrew_kegs "developer/ruby"
-      fi
-      read -p "Do you want to set up JavaScript tools? (Y/N): " -n 1 -r
-      echo
-      if [[ $REPLY =~ ^[Yy]$ ]]
-      then
-      install_homebrew_kegs "developer/javascript"
-      fi
-      read -p "Do you want to set up Mobile Development tools? (Y/N): " -n 1 -r
-      echo
-      if [[ $REPLY =~ ^[Yy]$ ]]
-      then
-      setup_fastlane
-      fi
+
+    ask_developer_tools "Elixir" "elixir"
+    ask_developer_tools "Javascript" "javascript"
+    ask_developer_tools "Mobile Development" "" setup_fastlane
+    ask_developer_tools "Ruby" "ruby"
   fi
 }
 

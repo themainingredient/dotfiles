@@ -14,6 +14,7 @@ brew 'hub'
 brew 'imagemagick'
 
 # Programming language prerequisites and package managers
+brew 'asdf'
 brew 'libyaml' # should come after openssl
 brew 'coreutils'
 cask 'gpg-suite'
