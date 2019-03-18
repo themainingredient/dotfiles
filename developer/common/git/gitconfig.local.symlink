@@ -1,5 +1,0 @@
-[user]
-        name = pietervanwijk
-        email = hello@pietervanwijk.com
-[credential]
-        helper = osxkeychain
