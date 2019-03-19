@@ -1,3 +1,6 @@
+# Taps
+tap 'themainingredient/homebrew-tmi'
+
 # Coding
 brew 'rbenv'
 
