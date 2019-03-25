@@ -1,0 +1,36 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "We set up this project because of a few reasons: - We want everybody to be up and running within 1 hour after joining our company - We want to share our default configuration to continuously pimp our workflow - We want to be able to use this script for not only developers, but designers and everybody in the company",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themainingredient/dotfiles.git"
+  },
+  "release": {
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
+  },
+  "author": "The Main Ingredient",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/themainingredient/dotfiles/issues"
+  },
+  "homepage": "https://github.com/themainingredient/dotfiles#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
+    "semantic-release": "^15.13.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
