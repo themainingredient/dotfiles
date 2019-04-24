@@ -7,4 +7,7 @@ enforce_qt5_path () {
   fi
 }
 
-enforce_qt5_path
+if [[ $(brew list | grep qt@5.5) == "qt@5.5" ]]
+then
+  enforce_qt5_path
+fi
