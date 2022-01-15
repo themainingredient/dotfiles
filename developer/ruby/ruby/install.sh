@@ -1,7 +1,7 @@
 # This will install a default Ruby version for you.
 
 function install_default_ruby () {
-  local default_version="2.5.1"
+  local default_version="3.1.0"
 
   echo "  Installing a default Ruby for you."
   read -t 10 -p "Version ${default_version} will be installed in 10 seconds, unless you supply a different version: " version
