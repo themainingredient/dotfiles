@@ -1,4 +1,8 @@
+# Color picker
+brew 'sip'
+
 # Cask
-cask 'craftmanager'
-cask 'sketch'
-cask 'zeplin'
+cask 'adobe-creative-cloud'
+cask 'figma'
+cask 'miro'
+cask 'principle'

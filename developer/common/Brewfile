@@ -3,9 +3,9 @@ brew 'git'
 brew 'openssl'
 brew 'watchman'
 
-# Heroku
-tap 'heroku/brew'
-brew 'heroku/brew/heroku'
+# Heroku, no longer actively used at TMI
+# tap 'heroku/brew'
+# brew 'heroku/brew/heroku'
 
 # GitHub
 brew 'hub'
