@@ -4,7 +4,7 @@ cask 'google-chrome'
 
 cask '1password'
 cask 'dropbox'
-cask 'harvest'
+# cask 'harvest'
 cask 'slack'
 cask 'fantastical'
 cask 'notion'
